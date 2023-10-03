@@ -4,8 +4,14 @@ import AddIcon from '@mui/icons-material/Add';
 import ViewStreamIcon from '@mui/icons-material/ViewStream';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import SearchIcon from '@mui/icons-material/Search';
+import { useState } from 'react';
+import SortPlayList from './sortPlayList';
+import AddPlayList from './addPlayList';
+import usePopup from '../hooks/usePopUp';
 
 function MediaLib() {
+    const [showAddPlayList, setShowAddPlayList] = usePopup(false)
+    const [showSorted, setShowSorted] = usePopup(false)
 
   return (
         <div className='m-2 bg-neutral-900 rounded-md py-2 px-3 w-[360px] text-l font-bold'>
@@ -15,8 +21,9 @@ function MediaLib() {
                     <h1>Медиатека</h1>
                 </button>
                 <div className='flex items-center py-1 px-3 gap-3 h-10'>
-                    <button className='hover:bg-neutral-800 rounded-full transition-color duration-500 text-neutral-400 hover:text-white'>
-                        <AddIcon sx={{ fontSize: 25 }}/>             
+                    <button onClick={()=>setShowAddPlayList(!showAddPlayList)} className='hover:bg-neutral-800 rounded-full transition-color duration-500 text-neutral-400 hover:text-white'>
+                        <AddIcon sx={{ fontSize: 25 }}/>
+                        {showAddPlayList? <AddPlayList /> : " "}       
                     </button>                  
                     <button className='hover:bg-neutral-800 rounded-full transition-color duration-500 text-neutral-400 hover:text-white'>
                         <ArrowForwardIcon sx={{ fontSize: 25 }}/>             
@@ -37,7 +44,8 @@ function MediaLib() {
                     <SearchIcon sx={{ fontSize: 20 }}/>
                 </div>
                 <div className='py-1 px-2 rounded-full transition-color text-neutral-400 hover:text-white cursor-pointer'>
-                    <button>Недавно прослушано ▼</button>
+                    <button onClick={()=>setShowSorted(!showSorted)}>Недавно прослушано ▼</button>
+                    {showSorted ? <SortPlayList /> : " "}
                 </div>
             </div>
             <div>
