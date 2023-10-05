@@ -1,16 +1,19 @@
 import React from 'react';
 import './styles/index.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { Provider } from 'react-redux'
 import Home from './page/Home';
-
+import {store} from './store/store'
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home/>} />
-        </Routes>
-      </BrowserRouter>
+       <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home/>} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
     </div>
   );
 }
