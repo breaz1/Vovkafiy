@@ -6,7 +6,7 @@ function PlayList() {
         <div className='flex hover:bg-neutral-800 rounded-md p-2'>
             <img />
             <div>
-                <p className="text-white text-xs">PlayListName</p>
+                <p className="text-white text-xs">PlпgggayListName</p>
                 <p className="text-neutral-400 text-xs">Плейлист•Name</p>
             </div>
         </div>
